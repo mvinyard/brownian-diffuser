@@ -5,7 +5,7 @@ import sys
 
 setuptools.setup(
     name="brownian-diffuser",
-    version="0.0.1rc",
+    version="0.0.1",
     python_requires=">3.7.0",
     author="Michael E. Vinyard - Harvard University - Broad Institute of MIT and Harvard - Massachussetts General Hospital",
     author_email="mvinyard@broadinstitute.org",
