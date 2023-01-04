@@ -1,11 +1,22 @@
 
+__module_name__ = "_time.py"
+__doc__ = """Time Module"""
+__author__ = ", ".join(["Michael E. Vinyard"])
+__email__ = ", ".join(["vinyard@g.harvard.edu"])
+__version__ = "0.0.2"
+
+
+# -- import packages: --------------------------------------------------------------------
 import numpy as np
 import torch
 
+
+# -- code: -------------------------------------------------------------------------------
 def timespan(t: (torch.Tensor or np.ndarray)):
     return (t.max() - t.min()).item()
 
-    
+
+# -- controller class: -------------------------------------------------------------------
 class TimeConfiguration:
     def __parse__(self, kwargs, ignore=["self"]):
 
