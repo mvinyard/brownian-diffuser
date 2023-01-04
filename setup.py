@@ -16,6 +16,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         "torch>=1.12.0",
+        "autodevice>=0.0.2",
     ],
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
