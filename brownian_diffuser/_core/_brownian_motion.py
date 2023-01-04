@@ -1,4 +1,11 @@
 
+__module_name__ = "_brownian_motion.py"
+__doc__ = """Brownian Motion Module"""
+__author__ = ", ".join(["Michael E. Vinyard"])
+__email__ = ", ".join(["vinyard@g.harvard.edu"])
+__version__ = "0.0.2"
+
+
 # -- import packages: --------------------------------------------------------------------
 import torch
 
