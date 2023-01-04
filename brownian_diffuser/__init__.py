@@ -6,6 +6,6 @@ __email__ = ", ".join(["vinyard@g.harvard.edu"])
 __version__ = "0.0.2"
 
 
-# import sub-modules: --------------------------------------------------------------------
+# -- import sub-modules: -----------------------------------------------------------------
 from ._core import BrownianMotion, BrownianDiffuser, nn_int
 from . import _core
