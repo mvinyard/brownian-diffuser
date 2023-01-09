@@ -5,6 +5,7 @@ __author__ = ", ".join(["Michael E. Vinyard"])
 __email__ = ", ".join(["vinyard@g.harvard.edu"])
 __version__ = "0.0.2"
 
+
 # -- import packages: --------------------------------------------------------------------
 from autodevice import AutoDevice
 import numpy as np
@@ -46,14 +47,13 @@ class BrownianDiffuser(torch.nn.Module):
         Should only called once - run once upon calling w.r.t. the data.
         """
         self._brownian_motion = BrownianMotion(
-            X_state, n_steps=self.steps_to_take, stdev=self.stdev
+            X_state, n_steps=self.steps_to_take, stdev=self.stdev.to(self.device), device=self.device,
         )
         
     def __config__(self, X0, kwargs, ignore=["self", "X0"]):
         self.__parse__(kwargs, ignore)
         self._configure_forward()
         self.time = TimeConfiguration(self.t)
-#         if not hasattr(self, "_brownian_motion"):
         self.device = AutoDevice()
         self._configure_brownian_motion(X0)
 
