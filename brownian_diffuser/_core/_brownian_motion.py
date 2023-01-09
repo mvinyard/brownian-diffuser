@@ -8,6 +8,7 @@ __version__ = "0.0.2"
 
 # -- import packages: --------------------------------------------------------------------
 import torch
+from autodevice import AutoDevice
 
 
 # -- main module class: ------------------------------------------------------------------
@@ -18,7 +19,7 @@ class BrownianMotion:
             if not key in ignore:
                 setattr(self, key, val)
 
-    def __init__(self, X_state: torch.Tensor, stdev: float, n_steps: int) -> None:
+    def __init__(self, X_state: torch.Tensor, stdev: float, n_steps: int, device = AutoDevice()) -> None:
 
         """
         Brownian Motion class
@@ -44,15 +45,41 @@ class BrownianMotion:
 
     @property
     def state_shape(self) -> list:
+        """
+        State shape.
+        
+        Parameters:
+        -----------
+        None
+        
+        Returns:
+        --------
+        state_shape
+            type: list
+        """
         return list(self.X_state.shape)
 
     @property
     def temporal_state_shape(self) -> list:
+        """
+        Temporal state shape. n_steps x state_shape.
+        
+        Parameters:
+        -----------
+        None
+        
+        Returns:
+        --------
+        temporal_state_shape
+            type: list
+        """
         return [self.n_steps] + self.state_shape
 
     def __call__(self):
         """Create brownian motion Tensor."""
-        return torch.randn(self.temporal_state_shape, requires_grad=True) * self.stdev
+        return torch.randn(self.temporal_state_shape, requires_grad=True).to(
+            self.device
+        ) * self.stdev.to(self.device)
 
     def __repr__(self):
         return "Brownian Motion Generator"
